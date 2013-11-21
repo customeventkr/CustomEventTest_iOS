@@ -42,7 +42,13 @@
 #pragma mark - CaulyAdViewDelegate
 - (void)didReceiveAd:(CaulyAdView *)adView isChargeableAd:(BOOL)isChargeableAd{
     NSLog(@"Cauly Custom Event : didReceiveAd");
-
+#ifdef _FAILURE_TEST_
+    if (0  == (arc4random() % 2))
+    {
+        [self didFailToReceiveAd:adView errorCode:-99999 errorMsg:@"failure test."];
+        return;
+    }
+#endif
     // requestBannerAd에서 add했던 view를 제거함
     [adView removeFromSuperview];
     adView.hidden = NO;

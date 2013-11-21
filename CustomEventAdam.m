@@ -43,6 +43,14 @@
 - (void)didReceiveAd:(AdamAdView *)adView
 {
     NSLog(@"Adam Custom Event : Received");
+#ifdef _FAILURE_TEST_
+    if (0  == (arc4random() % 2))
+    {
+        NSError *failTestError = [NSError errorWithDomain:@"failure test." code:-99999 userInfo:nil];
+        [self didFailToReceiveAd:adView error:failTestError];
+        return;
+    }
+#endif
     // requestBannerAd에서 add했던 view를 제거함
     [adView removeFromSuperview];
     adView.hidden = NO;

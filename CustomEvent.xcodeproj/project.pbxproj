@@ -634,6 +634,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CustomEvent/CustomEvent-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = _FAILURE_TEST_;
 				INFOPLIST_FILE = "CustomEvent/CustomEvent-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -643,6 +644,7 @@
 					/Users/terryahn/Projects/CustomEvent/CaulyLib,
 					/Users/terryahn/Projects/CustomEvent/Library,
 				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -657,6 +659,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CustomEvent/CustomEvent-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = _FAILURE_TEST_;
 				INFOPLIST_FILE = "CustomEvent/CustomEvent-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -666,6 +669,7 @@
 					/Users/terryahn/Projects/CustomEvent/CaulyLib,
 					/Users/terryahn/Projects/CustomEvent/Library,
 				);
+				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
