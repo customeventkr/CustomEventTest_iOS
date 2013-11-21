@@ -20,6 +20,9 @@
     CaulyAdSetting * adSetting = [CaulyAdSetting globalSetting];
     [CaulyAdSetting setLogLevel:CaulyLogLevelAll];
     adSetting.appCode = serverParameter;
+    // Cauly 자체 reloading 시간과 AdMob mediation reloading 시간이 달라져서 복잡해지는 문제를 해결하기 위해 Cauly reloading 시간을 최대(120초)로 설정하고 dynamic reload 설정도 제거한 후, AdMob 상에서 reload 시간을 120초보다 짧게 설정하는 것이 좋음.
+    adSetting.reloadTime = CaulyReloadTime_120;
+    adSetting.useDynamicReloadTime = NO;
     adSetting.animType = CaulyAnimNone;
     
     UIViewController *viewController = [self.delegate viewControllerForPresentingModalView];
@@ -31,6 +34,7 @@
     [viewController.view addSubview:_adView];
     
     // Cauly 배너광고 시작 및 호출
+    _adView.hidden = YES;
     [_adView startBannerAdRequest];
 }
 
@@ -39,6 +43,9 @@
 - (void)didReceiveAd:(CaulyAdView *)adView isChargeableAd:(BOOL)isChargeableAd{
     NSLog(@"Cauly Custom Event : didReceiveAd");
 
+    // requestBannerAd에서 add했던 view를 제거함
+    [adView removeFromSuperview];
+    adView.hidden = NO;
     [self.delegate customEventBanner:self didReceiveAd:adView];
 }
 
