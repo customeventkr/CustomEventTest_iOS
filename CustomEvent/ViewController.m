@@ -71,10 +71,12 @@
     switch (touchedButton.tag)
     {
         case 11:
-            mediationID = @"b6db6dc2b7534e27";
+            //mediationID = @"b6db6dc2b7534e27";
+            mediationID = @"ca-app-pub-7314735943412778/5433916445";
             break;
         case 12:
-            mediationID = @"d84636499f894cb9";
+            //mediationID = @"d84636499f894cb9";
+            mediationID = @"ca-app-pub-7314735943412778/3957183245";
             break;
     }
     
@@ -99,10 +101,12 @@
     switch (touchedButton.tag)
     {
         case 1:
-            mediationID = @"7f1f21a1dd7c489e";
+            //mediationID = @"7f1f21a1dd7c489e";    // legacy admob
+            mediationID = @"ca-app-pub-7314735943412778/4016058841";    // new admob
             break;
         case 2:
-            mediationID = @"c805e0e9ccbc4df5";
+            //mediationID = @"c805e0e9ccbc4df5";  // legacy admob
+            mediationID = @"ca-app-pub-7314735943412778/1062592448"; // new admob
             break;
     }
     

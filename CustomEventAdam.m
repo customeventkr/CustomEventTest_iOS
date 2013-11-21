@@ -22,15 +22,20 @@
     AdamAdView *adView = [AdamAdView sharedAdView];
     if (![adView.superview isEqual:viewController.view])
     {
+        // Adam 배너광고의 경우 320x48 사이즈로 애드몹과는 세로 사이즈에 차이가 있음.
+        // 320x50 가운데 정렬을 위해 y position을 1.0으로 지정.
+        adView.frame = CGRectMake(0.0, 1.0, 320.0, 48.0);
         [viewController.view addSubview:adView];
     }
     adView.delegate = self;
-    // Adam 배너광고의 경우 320x48 사이즈로 애드몹과는 세로 사이즈에 차이가 있음.
-    adView.frame = CGRectMake(0.0, 1.0, 320.0, 48.0);
     adView.clientId = serverParameter;
+    // AdMob에서 refresh 주기를 관리하도록 Adam 자체 광고 refresh는 막아둠.
+    if (adView.usingAutoRequest) [adView stopAutoRequestAd];
     
-    // Adam AdView의 경우 requestAd를 하면 바로 광고가 노출됨.
+    // Adam AdView의 경우 requestAd를 하면 바로 광고가 노출되므로 광고 호출 후에 hidden 처리하여 노출을 막고 실제 광고가 수신되었을 때 보이게 함.
+    adView.hidden = YES;
     [adView requestAd];
+    
 }
 
 // Adam Banner
@@ -38,7 +43,9 @@
 - (void)didReceiveAd:(AdamAdView *)adView
 {
     NSLog(@"Adam Custom Event : Received");
-    
+    // requestBannerAd에서 add했던 view를 제거함
+    [adView removeFromSuperview];
+    adView.hidden = NO;
     // 배너광고 view를 AdMob mediation으로 전달
     [self.delegate customEventBanner:self didReceiveAd:adView];
 }
